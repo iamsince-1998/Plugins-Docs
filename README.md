@@ -1,15 +1,48 @@
 # Plugins Docs
 
-This repository hosts documentation for my Unreal Engine plugins.
+Documentation site built with [Docusaurus](https://docusaurus.io/), set up for **multiple plugin doc sets** in one place.
 
-## Plugin Documentation
+**Live URL (after GitHub Pages deploy):**
 
-- Replicated Containers docs start here:
-  - https://iamsince-1998.github.io/Plugins-Docs/replicated-containers/overview
+- https://iamsince-1998.github.io/Plugins-Docs/
 
-## Important: GitHub Pages setting (this is the main issue)
+## Primary Plugin Docs
 
-If your site is showing README/installation text instead of the Docusaurus docs app, your Pages source is wrong.
+- **Replicated Containers**
+  - Overview: `docs/replicated-containers/overview.md`
+  - Installation: `docs/replicated-containers/installation.md`
+  - Quickstart (Blueprint): `docs/replicated-containers/quickstart-blueprint.md`
+  - Quickstart (C++): `docs/replicated-containers/quickstart-cpp.md`
+  - API Reference: `docs/replicated-containers/api-reference.md`
+
+## Live Documentation Website
+
+- https://iamsince-1998.github.io/Plugins-Docs/
+
+> If the site URL shows this README or a plain markdown page instead of the Docusaurus site,
+> go to **Settings → Pages** and set **Source = GitHub Actions**.
+
+## Local Preview
+
+```bash
+npm ci
+npm run start
+```
+
+Generates the static site into `./build`.
+
+---
+
+## 🧩 Organizing docs per plugin
+
+- Keep each plugin in its own folder under `docs/`.
+- Add each plugin section in `sidebars.js` under **Plugin Docs**.
+- Suggested pages per plugin:
+  - `overview.md`
+  - `installation.md`
+  - `quickstart.md`
+  - `api-reference.md`
+  - `troubleshooting.md`
 
 Use this:
 
@@ -22,25 +55,31 @@ After that, open:
 
 - https://iamsince-1998.github.io/Plugins-Docs/
 
-## Local test
+1. Push this repo to GitHub
+2. Go to **Settings → Pages**
+3. Set source to **GitHub Actions**
+4. Push any commit to `main` — it builds and deploys automatically ✅
 
-```bash
-npm ci
-npm run start
-```
+### Manual
 
-## Production test
+If you want to test a production bundle locally:
 
 ```bash
 npm run build
 npm run serve -- --host 0.0.0.0 --port 4173
 ```
 
+## Production test
 
-## If you still see 404 on GitHub Pages
-
-1. Open **Actions** and verify the latest **Deploy to GitHub Pages** workflow is green.
-2. Open **Settings → Pages** and set **Source = GitHub Actions**.
-3. Open the deployed URL from the workflow summary (this avoids wrong/cached links).
-4. Valid project URL should be:
-   - `https://iamsince-1998.github.io/Plugins-Docs/`
+```text
+Plugins-Docs/
+├── docs/
+│   ├── intro.md
+│   ├── replicated-containers/
+│   ├── guides/
+│   └── api/
+├── static/
+├── src/css/custom.css
+├── docusaurus.config.js
+└── sidebars.js
+```
