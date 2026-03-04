@@ -1,90 +1,46 @@
 # Plugins Docs
 
-Documentation site built with [Docusaurus](https://docusaurus.io/), deployed to GitHub Pages.
+This repository hosts documentation for my Unreal Engine plugins.
 
-## 🚀 Setup
+## Plugin Documentation
 
-### 1. Install dependencies
+- Replicated Containers docs start here:
+  - https://iamsince-1998.github.io/Plugins-Docs/replicated-containers/overview
+
+## Important: GitHub Pages setting (this is the main issue)
+
+If your site is showing README/installation text instead of the Docusaurus docs app, your Pages source is wrong.
+
+Use this:
+
+1. GitHub repo → **Settings** → **Pages**
+2. Under **Build and deployment** set **Source = GitHub Actions**
+3. Do **not** keep **Deploy from a branch (main/root)**
+4. Re-run the latest workflow or push one new commit
+
+After that, open:
+
+- https://iamsince-1998.github.io/Plugins-Docs/
+
+## Local test
 
 ```bash
-npm install
+npm ci
+npm run start
 ```
 
-### 2. Run locally
-
-```bash
-npm start
-```
-
-Opens at `http://localhost:3000`. Hot-reloads as you edit.
-
-### 3. Build
+## Production test
 
 ```bash
 npm run build
+npm run serve -- --host 0.0.0.0 --port 4173
 ```
 
-Generates the static site into `./build`.
 
----
+## If you still see 404 on GitHub Pages
 
-## ⚙️ Configure for your GitHub
-
-Before deploying, update these fields in `docusaurus.config.js`:
-
-```js
-url: 'https://YOUR_GITHUB_USERNAME.github.io',
-baseUrl: '/YOUR_REPO_NAME/',
-organizationName: 'YOUR_GITHUB_USERNAME',
-projectName: 'YOUR_REPO_NAME',
-```
-
----
-
-## 🌐 Deploy to GitHub Pages
-
-### Automatic (recommended)
-
-This repo includes a GitHub Actions workflow (`.github/workflows/deploy.yml`).
-
-1. Push this repo to GitHub
-2. Go to **Settings → Pages**
-3. Set source to **Deploy from a branch → gh-pages**
-4. Push any commit to `main` — it deploys automatically ✅
-
-### Manual
-
-```bash
-GIT_USER=your_github_username npm run deploy
-```
-
----
-
-## 📁 Project Structure
-
-```
-Plugins-Docs/
-├── docs/
-│   ├── intro.md              # Homepage
-│   ├── guides/
-│   │   ├── getting-started.md
-│   │   ├── installation.md
-│   │   └── configuration.md
-│   └── api/
-│       ├── overview.md
-│       ├── authentication.md
-│       ├── endpoints.md
-│       └── errors.md
-├── static/                   # Static assets
-├── src/css/custom.css        # Custom styles
-├── docusaurus.config.js      # Main config
-└── sidebars.js               # Sidebar structure
-```
-
-## ✏️ Adding a new doc
-
-1. Create a `.md` file anywhere inside `docs/`
-2. Add a frontmatter `id` and `title`
-3. Add it to `sidebars.js`
-
-That's it!
+1. Open **Actions** and verify the latest **Deploy to GitHub Pages** workflow is green.
+2. Open **Settings → Pages** and set **Source = GitHub Actions**.
+3. Open the deployed URL from the workflow summary (this avoids wrong/cached links).
+4. Valid project URL should be:
+   - `https://iamsince-1998.github.io/Plugins-Docs/`
