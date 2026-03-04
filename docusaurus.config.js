@@ -74,8 +74,9 @@ const config = {
             title: 'Docs',
             items: [
               { label: 'Introduction', to: '/' },
-              { label: 'API Reference', to: '/api/overview' },
-              { label: 'Guides', to: '/guides/getting-started' },
+              { label: 'Replicated Containers', to: '/replicated-containers/overview' },
+              { label: 'Mobile Performance Optimizer', to: '/mobile-performance-optimizer/overview' },
+              { label: 'AAA_HealthSystem', to: '/aaa-healthsystem/overview' },
             ],
           },
           {
