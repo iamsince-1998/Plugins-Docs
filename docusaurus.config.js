@@ -14,7 +14,9 @@ const config = {
   // GitHub Pages deployment config
   organizationName: 'iamsince-1998', // Your GitHub username
   projectName: 'Plugins-Docs',                   // Your GitHub repo name
-  trailingSlash: false,
+  // GitHub Pages serves folder-based routes more reliably than `.html` routes.
+  // Keeping trailing slashes enabled prevents deep-link 404s on refresh.
+  trailingSlash: true,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -72,8 +74,9 @@ const config = {
             title: 'Docs',
             items: [
               { label: 'Introduction', to: '/' },
-              { label: 'API Reference', to: '/api/overview' },
-              { label: 'Guides', to: '/guides/getting-started' },
+              { label: 'Replicated Containers', to: '/replicated-containers/overview' },
+              { label: 'Mobile Performance Optimizer', to: '/mobile-performance-optimizer/overview' },
+              { label: 'AAA_HealthSystem', to: '/aaa-healthsystem/overview' },
             ],
           },
           {
