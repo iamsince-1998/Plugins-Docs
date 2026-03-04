@@ -53,13 +53,16 @@ This repo includes a GitHub Actions workflow (`.github/workflows/deploy.yml`).
 
 1. Push this repo to GitHub
 2. Go to **Settings → Pages**
-3. Set source to **Deploy from a branch → gh-pages**
-4. Push any commit to `main` — it deploys automatically ✅
+3. Set source to **GitHub Actions**
+4. Push any commit to `main` — it builds and deploys automatically ✅
 
 ### Manual
 
+If you want to test a production bundle locally:
+
 ```bash
-GIT_USER=your_github_username npm run deploy
+npm run build
+npm run serve -- --host 0.0.0.0 --port 4173
 ```
 
 ---
