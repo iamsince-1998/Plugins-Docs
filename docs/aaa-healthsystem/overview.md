@@ -32,30 +32,32 @@ A production-ready health + armor framework for Unreal projects that need **clea
 
 ## At-a-glance gameplay shape
 
-```mermaid
-flowchart LR
-  A[Incoming Damage] --> B{Armor Enabled?}
-  B -- Yes --> C[Reduce Armor]
-  C --> D{Armor Empty?}
-  D -- Yes --> E[Reduce Health]
-  D -- No --> F[Update UI]
-  B -- No --> E
-  E --> G{Health <= 0?}
-  G -- Yes --> H[Broadcast Death]
-  G -- No --> F
+```text
+Incoming Damage
+      |
+      v
+ [Armor?] --yes--> Reduce Armor --> Armor Empty? --> Health
+      | no
+      v
+   Reduce Health --> Is Dead? --> Broadcast Death / Update UI
 ```
 
 ## Blueprint vs C++ usage
 
 <Tabs>
-  <TabItem value="bp" label="Blueprint Visual" default>
+  <TabItem value="bp" label="Blueprint Nodes" default>
 
-```mermaid
-flowchart TD
-  B1([BeginPlay]) --> B2[Get AAA_HealthSystem Component]
-  B2 --> B3[Bind OnHealthChanged]
-  B3 --> B4[Bind OnDeath]
-  B4 --> B5([Runtime AnyDamage Events])
+```text
+BeginPlay
+  -> Get Component (AAA_HealthSystem)
+  -> Bind Event: OnHealthChanged
+  -> Bind Event: OnDeath
+
+AnyDamage
+  -> Apply Damage (to owning actor)
+
+Tick/Timer
+  -> Call RegenerateHealth (optional)
 ```
 
   </TabItem>
@@ -85,3 +87,7 @@ void AMyCharacter::BeginPlay()
 1. [Installation & Setup](/aaa-healthsystem/installation-and-setup)
 2. [Damage, Regeneration & Events](/aaa-healthsystem/damage-regeneration-events)
 3. [UI + Multiplayer Patterns](/aaa-healthsystem/ui-and-multiplayer)
+
+---
+
+Need the original long visual walkthrough? Keep it as project media, then map each screenshot into the new pages above so users can learn in smaller chunks.
